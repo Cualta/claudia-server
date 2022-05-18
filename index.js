@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 
+let Password = "Pasword123";
 let webhook = [];
 
 //app.use("/pokemon", require("./pokemonController"));
