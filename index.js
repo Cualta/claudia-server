@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 
-let Password = "Pasword123";
+let password = "Pasword123";
 let webhook = [];
 
 //app.use("/pokemon", require("./pokemonController"));
@@ -25,7 +25,13 @@ app.get("/test", (req, res) => {
 });
 
 app.post("/webhook", (req, res) => {
-  const url = req.query.url;
+  //const url = req.query.url;
+  const { url, password } = req.body;
+  if (password !== THE_PASWORD) {
+    res.status(401).end();
+    return;
+  }
+
   console.log("!!!! Somebody registered a webhook !!!");
   webhooks.push(url);
   res.end();
